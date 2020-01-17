@@ -1,20 +1,18 @@
-const process = require('process')
-
 class Mutex {
   constructor() {
     this.queue = []
-    
+
     this._locked = false
-    this.current = null
   }
 
+  // eslint-disable-next-line
   async aquire(fn = (err, value) => {}, acc = {}) {
-    if (typeof fn !== 'function') { 
+    if (typeof fn !== 'function') {
       throw new Error('param should be a function')
     }
 
     if (this._locked) {
-      this.queue.push(fn) 
+      this.queue.push(fn)
     } else {
       this._release(fn, acc)
     }
@@ -26,8 +24,7 @@ class Mutex {
     this._locked = false
 
     if (this.queue.length > 0) {
-      const fn = this.queue.shift()
-      await this.aquire(fn, cur)
+      await this.aquire(this.queue.shift(), cur)
     }
   }
 
@@ -35,7 +32,7 @@ class Mutex {
     let value
     let error
     try {
-      value = await fn(acc.error, acc.value) 
+      value = await fn(acc.error, acc.value)
     } catch (e) {
       error = e
     }
@@ -43,4 +40,4 @@ class Mutex {
   }
 }
 
-module.exports = new Mutex()
+module.exports = Mutex

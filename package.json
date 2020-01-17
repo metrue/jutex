@@ -1,10 +1,11 @@
 {
-  "name": "mutex",
+  "name": "jutex",
   "version": "0.0.1",
-  "description": "mutex in JavaScript",
+  "description": "Mutex in JavaScript",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
@@ -16,7 +17,18 @@
     "url": "https://github.com/metrue/mutex/issues"
   },
   "homepage": "https://github.com/metrue/mutex#readme",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/preset-env": "^7.6.3",
+    "babel-eslint": "^10.0.3",
+    "babel-jest": "^24.9.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^9.0.1",
+    "eslint-plugin-import": "^1.8.0",
+    "eslint-plugin-jest": "^20.0.3",
+    "eslint-plugin-jsx-a11y": "^1.2.2",
+    "eslint-plugin-mocha": "^6.2.2",
+    "eslint-plugin-react": "^5.1.1",
     "jest": "^24.9.0"
   }
 }
